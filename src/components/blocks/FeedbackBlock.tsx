@@ -12,6 +12,26 @@ export const FeedbackBlock: React.FC<FeedbackBlockProps> = ({ block, onSubmit })
   const [customInput, setCustomInput] = useState<string>('');
   const [submitted, setSubmitted] = useState(false);
 
+  // If no question is provided, don't render the block
+  if (!question) {
+    return (
+      <div
+        style={{
+          border: '1px solid #dc3545',
+          borderRadius: '8px',
+          padding: '12px',
+          marginTop: '12px',
+          backgroundColor: '#4d2d2d',
+          color: '#dc3545',
+          fontSize: '14px',
+          fontFamily: 'inherit',
+        }}
+      >
+        ⚠️ Feedback block is missing required question data
+      </div>
+    );
+  }
+
   const handleSubmit = () => {
     const feedback = selectedOption === 'custom' ? customInput : selectedOption;
     if (feedback) {
