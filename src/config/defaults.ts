@@ -16,9 +16,9 @@ export const DEFAULT_API_CONFIG: Partial<ApiConfig> = {
  * Default theme configuration
  */
 export const DEFAULT_THEME = {
-  primaryColor: '#007bff',
-  backgroundColor: '#ffffff',
-  messageBackgroundColor: '#f5f5f5',
+  primaryColor: '#7CA982', // Cambridge blue/green accent
+  backgroundColor: '#243E36', // Dark slate gray
+  messageBackgroundColor: 'transparent',
   fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
 };
 

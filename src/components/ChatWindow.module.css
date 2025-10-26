@@ -4,9 +4,8 @@
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
+  background-color: #243E36;
+  border-radius: 0;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   box-sizing: border-box;
@@ -14,11 +13,12 @@
 
 .header {
   position: relative;
-  padding: 16px;
-  background-color: #007bff;
-  color: white;
-  font-weight: 600;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 20px 24px;
+  background-color: #1a2f28;
+  color: #F1F7ED;
+  font-weight: 500;
+  font-size: 15px;
+  border-bottom: 1px solid #1a2f28;
   z-index: 10;
 }
 
@@ -26,24 +26,55 @@
   position: relative;
   flex: 1;
   overflow-y: auto;
-  padding: 16px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 24px;
   z-index: 1;
+}
+
+.messagesContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messagesContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb {
+  background: #7CA982;
+  border-radius: 3px;
+}
+
+.messagesContainer::-webkit-scrollbar-thumb:hover {
+  background: #C2A83E;
 }
 
 .inputContainer {
   position: relative;
-  padding: 16px;
-  border-top: 1px solid #e0e0e0;
-  background-color: #f9f9f9;
+  padding: 24px;
+  background-color: #1a2f28;
   z-index: 10;
 }
 
 .loadingIndicator {
   text-align: center;
-  padding: 8px;
-  color: #666;
+  padding: 16px;
+  color: #7CA982;
   font-size: 14px;
+  font-weight: 400;
+}
+
+.cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background-color: #7CA982;
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
 }

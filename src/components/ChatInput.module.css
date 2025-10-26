@@ -1,54 +1,70 @@
 .inputWrapper {
   display: flex;
-  gap: 8px;
+  gap: 12px;
   align-items: flex-end;
+  background-color: #2d4d42;
+  border-radius: 12px;
+  padding: 4px;
+  border: 1px solid #3d5d52;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.inputWrapper:focus-within {
+  border-color: #7CA982;
+  background-color: #2d4d42;
 }
 
 .textarea {
   flex: 1;
-  min-height: 44px;
-  max-height: 120px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  min-height: 48px;
+  max-height: 160px;
+  padding: 14px 16px;
+  border: none;
+  background-color: transparent;
+  color: #F1F7ED;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 15px;
+  line-height: 1.5;
   resize: none;
   outline: none;
-  transition: border-color 0.2s;
 }
 
-.textarea:focus {
-  border-color: #007bff;
+.textarea::placeholder {
+  color: #7CA982;
+  opacity: 0.6;
 }
 
 .textarea:disabled {
-  background-color: #f5f5f5;
+  color: #5d7d72;
   cursor: not-allowed;
 }
 
 .sendButton {
-  padding: 12px 24px;
-  background-color: #007bff;
-  color: white;
+  padding: 10px 20px;
+  background-color: #7CA982;
+  color: #243E36;
   border: none;
   border-radius: 8px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  align-self: flex-end;
+  margin: 4px;
 }
 
 .sendButton:hover:not(:disabled) {
-  background-color: #0056b3;
+  background-color: #C2A83E;
+  transform: translateY(-1px);
 }
 
 .sendButton:disabled {
-  background-color: #ccc;
+  background-color: #3d5d52;
+  color: #5d7d72;
   cursor: not-allowed;
 }
 
 .sendButton:active:not(:disabled) {
-  transform: scale(0.98);
+  transform: translateY(0);
 }

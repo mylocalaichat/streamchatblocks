@@ -16,7 +16,13 @@ export const TableBlock: React.FC<CommunityComponentProps> = ({ block }) => {
 
   if (!headers.length || !rows.length) {
     return (
-      <div style={{ padding: '12px', color: '#666', fontStyle: 'italic' }}>
+      <div style={{
+        padding: '12px',
+        color: '#7CA982',
+        fontStyle: 'italic',
+        fontSize: '14px',
+        fontFamily: 'inherit',
+      }}>
         No table data available
       </div>
     );
@@ -26,18 +32,22 @@ export const TableBlock: React.FC<CommunityComponentProps> = ({ block }) => {
     <div
       style={{
         marginTop: '12px',
-        border: '1px solid #ddd',
+        border: '1px solid #3d5d52',
         borderRadius: '8px',
         overflow: 'hidden',
+        backgroundColor: '#2d4d42',
+        fontFamily: 'inherit',
       }}
     >
       {caption && (
         <div
           style={{
-            padding: '8px 12px',
-            backgroundColor: '#f8f9fa',
-            fontWeight: 'bold',
-            borderBottom: '1px solid #ddd',
+            padding: '12px 16px',
+            backgroundColor: '#1a2f28',
+            fontWeight: '600',
+            borderBottom: '1px solid #3d5d52',
+            color: '#F1F7ED',
+            fontSize: '15px',
           }}
         >
           {caption}
@@ -52,15 +62,16 @@ export const TableBlock: React.FC<CommunityComponentProps> = ({ block }) => {
           }}
         >
           <thead>
-            <tr style={{ backgroundColor: '#f8f9fa' }}>
+            <tr style={{ backgroundColor: '#1a2f28' }}>
               {headers.map((header: string, index: number) => (
                 <th
                   key={index}
                   style={{
-                    padding: '12px',
+                    padding: '12px 16px',
                     textAlign: 'left',
                     fontWeight: '600',
-                    borderBottom: '2px solid #dee2e6',
+                    borderBottom: '1px solid #3d5d52',
+                    color: '#F1F7ED',
                   }}
                 >
                   {header}
@@ -73,15 +84,16 @@ export const TableBlock: React.FC<CommunityComponentProps> = ({ block }) => {
               <tr
                 key={rowIndex}
                 style={{
-                  backgroundColor: rowIndex % 2 === 0 ? '#ffffff' : '#f8f9fa',
+                  backgroundColor: rowIndex % 2 === 0 ? '#2d4d42' : '#1a2f28',
                 }}
               >
                 {row.map((cell: any, cellIndex: number) => (
                   <td
                     key={cellIndex}
                     style={{
-                      padding: '12px',
-                      borderBottom: '1px solid #dee2e6',
+                      padding: '12px 16px',
+                      borderBottom: '1px solid #3d5d52',
+                      color: '#E0EEC6',
                     }}
                   >
                     {cell}

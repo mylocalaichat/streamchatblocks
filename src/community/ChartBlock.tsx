@@ -12,11 +12,17 @@ import { CommunityComponentProps } from '../types';
  * }
  */
 export const ChartBlock: React.FC<CommunityComponentProps> = ({ block }) => {
-  const { title, data = [], color = '#007bff' } = block.data || {};
+  const { title, data = [], color = '#7CA982' } = block.data || {};
 
   if (!data.length) {
     return (
-      <div style={{ padding: '12px', color: '#666', fontStyle: 'italic' }}>
+      <div style={{
+        padding: '12px',
+        color: '#7CA982',
+        fontStyle: 'italic',
+        fontSize: '14px',
+        fontFamily: 'inherit',
+      }}>
         No chart data available
       </div>
     );
@@ -28,18 +34,20 @@ export const ChartBlock: React.FC<CommunityComponentProps> = ({ block }) => {
     <div
       style={{
         marginTop: '12px',
-        border: '1px solid #ddd',
+        border: '1px solid #3d5d52',
         borderRadius: '8px',
         padding: '16px',
-        backgroundColor: '#ffffff',
+        backgroundColor: '#2d4d42',
+        fontFamily: 'inherit',
       }}
     >
       {title && (
         <div
           style={{
-            fontWeight: 'bold',
+            fontWeight: '600',
             marginBottom: '16px',
-            fontSize: '16px',
+            fontSize: '15px',
+            color: '#F1F7ED',
           }}
         >
           {title}
@@ -55,17 +63,19 @@ export const ChartBlock: React.FC<CommunityComponentProps> = ({ block }) => {
                 justifyContent: 'space-between',
                 marginBottom: '4px',
                 fontSize: '14px',
+                color: '#E0EEC6',
               }}
             >
               <span>{item.label}</span>
-              <span style={{ fontWeight: 'bold' }}>{item.value}</span>
+              <span style={{ fontWeight: '600', color: '#F1F7ED' }}>{item.value}</span>
             </div>
             <div
               style={{
                 height: '24px',
-                backgroundColor: '#f0f0f0',
+                backgroundColor: '#1a2f28',
                 borderRadius: '4px',
                 overflow: 'hidden',
+                border: '1px solid #3d5d52',
               }}
             >
               <div
@@ -78,9 +88,9 @@ export const ChartBlock: React.FC<CommunityComponentProps> = ({ block }) => {
                   alignItems: 'center',
                   justifyContent: 'flex-end',
                   paddingRight: '8px',
-                  color: 'white',
+                  color: '#243E36',
                   fontSize: '12px',
-                  fontWeight: 'bold',
+                  fontWeight: '600',
                 }}
               />
             </div>

@@ -17,38 +17,28 @@ function App() {
       feedbackEndpoint: '/api/feedback',
     },
     customRenderers,
+    // Using default dark theme - you can customize colors here
     theme: {
-      primaryColor: '#667eea',
-      backgroundColor: '#ffffff',
-      messageBackgroundColor: '#f5f5f5',
+      primaryColor: '#c17767',
+      backgroundColor: '#1f1f1f',
+      messageBackgroundColor: 'transparent',
     },
   };
 
   return (
     <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-      padding: '20px',
+      width: '100vw',
+      height: '100vh',
+      margin: 0,
+      padding: 0,
+      backgroundColor: '#1f1f1f',
     }}>
-      <div style={{
-        width: '100%',
-        maxWidth: '900px',
-        height: '700px',
-        background: 'white',
-        borderRadius: '16px',
-        boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3)',
-        overflow: 'hidden',
-      }}>
-        <ChatWindow
-          config={chatConfig}
-          title="AI Medical Assistant"
-          onMessageSent={(msg) => console.log('Message sent:', msg)}
-          onError={(err) => console.error('Chat error:', err)}
-        />
-      </div>
+      <ChatWindow
+        config={chatConfig}
+        title="AI Medical Assistant"
+        onMessageSent={(msg) => console.log('Message sent:', msg)}
+        onError={(err) => console.error('Chat error:', err)}
+      />
     </div>
   );
 }
