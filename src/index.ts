@@ -15,6 +15,7 @@ export { BlockRenderer } from './components/BlockRenderer';
 export { TextBlock } from './components/blocks/TextBlock';
 export { DrugBlock } from './components/blocks/DrugBlock';
 export { FeedbackBlock } from './components/blocks/FeedbackBlock';
+export { ChatResponseBlock } from './components/blocks/ChatResponseBlock';
 
 // Community components
 export * from './community';

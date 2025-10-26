@@ -1,0 +1,37 @@
+.chatResponseBlock {
+  padding: 16px;
+  margin: 8px 0;
+  background-color: var(--block-background, #f8f9fa);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-color, #7CA982);
+  font-family: inherit;
+}
+
+.content {
+  color: var(--text-color, #2c3e50);
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: var(--text-color-secondary, #6c757d);
+  margin-top: 8px;
+  text-align: right;
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .chatResponseBlock {
+    background-color: var(--block-background, #2c3e50);
+  }
+  
+  .content {
+    color: var(--text-color, #ecf0f1);
+  }
+  
+  .timestamp {
+    color: var(--text-color-secondary, #95a5a6);
+  }
+}

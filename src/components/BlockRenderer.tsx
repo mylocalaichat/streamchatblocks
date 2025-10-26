@@ -3,6 +3,7 @@ import { ResponseBlock, BlockRendererRegistry } from '../types';
 import { DrugBlock } from './blocks/DrugBlock';
 import { FeedbackBlock } from './blocks/FeedbackBlock';
 import { TextBlock } from './blocks/TextBlock';
+import { ChatResponseBlock } from './blocks/ChatResponseBlock';
 
 interface BlockRendererProps {
   block: ResponseBlock;
@@ -32,6 +33,8 @@ export const BlockRenderer: React.FC<BlockRendererProps> = ({ block, customRende
       return <DrugBlock block={block} />;
     case 'feedback':
       return <FeedbackBlock block={block} />;
+    case 'chatresponse':
+      return <ChatResponseBlock block={block} />;
     default:
       return (
         <div style={{ padding: '8px', background: '#f0f0f0', borderRadius: '4px' }}>

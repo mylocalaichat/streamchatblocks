@@ -68,9 +68,13 @@ async def generate_sse_response(user_message: str):
 
     # Simulate streaming text response
     response_text = "Let me help you with that. "
-    for char in response_text:
-        yield f"data: {json.dumps({'type': 'token', 'content': char})}\n\n"
-        await asyncio.sleep(0.05)  # Simulate streaming delay
+    words = response_text.split()
+    for i, word in enumerate(words):
+        if i == 0:
+            yield f"data: {json.dumps({'type': 'token', 'content': word})}\n\n"
+        else:
+            yield f"data: {json.dumps({'type': 'token', 'content': ' ' + word})}\n\n"
+        await asyncio.sleep(0.08)  # Simulate streaming delay
 
     # Check if the user is asking about a drug
     if "aspirin" in user_message.lower():

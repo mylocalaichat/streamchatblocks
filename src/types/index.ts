@@ -15,7 +15,7 @@ export interface Message {
 /**
  * Different types of blocks that can appear in AI responses
  */
-export type BlockType = 'text' | 'drug' | 'feedback' | 'table' | 'chart' | 'custom';
+export type BlockType = 'text' | 'drug' | 'feedback' | 'table' | 'chart' | 'custom' | 'chatresponse';
 
 /**
  * Base interface for response blocks
@@ -59,6 +59,17 @@ export interface FeedbackBlock extends ResponseBlock {
     question: string;
     options?: string[];
     allowCustom?: boolean;
+  };
+}
+
+/**
+ * Chat response block for displaying AI responses
+ */
+export interface ChatResponseBlock extends ResponseBlock {
+  type: 'chatresponse';
+  data: {
+    content: string;
+    timestamp?: string;
   };
 }
 

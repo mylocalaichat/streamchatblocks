@@ -1,0 +1,10 @@
+fastapi==0.109.0
+uvicorn==0.27.0
+sse-starlette==1.8.2
+pydantic==2.5.3
+langchain==0.2.16
+langchain-community==0.2.16
+langchain-core==0.2.39
+langsmith==0.1.129
+langgraph==0.2.28
+ollama==0.3.3
