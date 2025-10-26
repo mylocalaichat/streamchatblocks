@@ -5,7 +5,7 @@ A React component library for building AI chat interfaces with Server-Sent Event
 ## Features
 
 - **SSE Streaming**: Real-time streaming responses from your backend
-- **FastAPI Ready**: Designed to work seamlessly with FastAPI backends
+- **FastAPI Ready**: Designed to work seamlessly with FastAPI backends - **no separate frontend server needed**!
 - **Extensible**: Easy-to-use plugin system for custom block types
 - **Community Components**: Share and use community-contributed components
 - **TypeScript**: Full TypeScript support with comprehensive type definitions
@@ -21,10 +21,35 @@ npm install streamchatblocks
 
 ## Quick Start
 
-### Frontend (React)
+### Option 1: FastAPI with Integrated UI (Recommended)
+
+**No separate frontend server needed!** FastAPI serves both the UI and API.
+
+Using Make (easiest):
+```bash
+make setup-example && make run-example
+```
+
+Or manually:
+```bash
+npm install
+npm run build
+./examples/fastapi-backend/setup.sh
+cd examples/fastapi-backend
+uv run uvicorn main:app --reload
+```
+
+Then open `http://localhost:8000` - Done!
+
+See the [FastAPI example](examples/fastapi-backend/) for complete setup.
+
+### Option 2: As a React Component
+
+Use StreamChatBlocks in your existing React app:
 
 ```tsx
 import { ChatWindow } from 'streamchatblocks';
+import 'streamchatblocks/dist/style.css';
 
 function App() {
   return (
@@ -42,7 +67,7 @@ function App() {
 export default App;
 ```
 
-### Backend (FastAPI)
+### FastAPI Backend (for both options)
 
 ```python
 from fastapi import FastAPI
@@ -291,20 +316,28 @@ Customize the appearance of your chat interface:
 
 ## Development
 
-### Setup
+### Quick Commands with Make
 
 ```bash
-# Install dependencies
-npm install
+make help           # Show all available commands
+make install        # Install npm dependencies
+make build          # Build the library
+make storybook      # Run Storybook (interactive docs)
+make lint           # Run ESLint
+make clean          # Clean build artifacts
 
-# Run Storybook
-npm run storybook
+# FastAPI Example
+make setup-example  # Build library and setup example
+make run-example    # Run FastAPI server
+```
 
-# Build library
-npm run build
+### Or use npm directly
 
-# Lint code
-npm run lint
+```bash
+npm install         # Install dependencies
+npm run build       # Build library
+npm run storybook   # Run Storybook
+npm run lint        # Lint code
 ```
 
 ### Project Structure

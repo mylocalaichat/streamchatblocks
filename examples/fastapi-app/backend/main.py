@@ -1,21 +1,24 @@
 """
-FastAPI Backend Example for StreamChatBlocks
+FastAPI Backend for StreamChatBlocks
 
-This example demonstrates how to create a FastAPI backend that works
-seamlessly with the StreamChatBlocks UI components.
+This FastAPI app serves both the frontend (React build) and API endpoints.
 
-Install dependencies:
-    pip install fastapi uvicorn sse-starlette
+Development:
+    Backend: uv run uvicorn main:app --reload
+    Frontend: cd ../frontend && npm run dev
 
-Run the server:
-    uvicorn main:app --reload
+Production:
+    cd ../frontend && npm run build  # Builds to backend/static
+    uv run uvicorn main:app --host 0.0.0.0 --port 8000
 """
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
+from pathlib import Path
 import json
 import asyncio
 import time
@@ -30,6 +33,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Serve static files (frontend build)
+static_dir = Path(__file__).parent / "static"
+if static_dir.exists():
+    app.mount("/assets", StaticFiles(directory=static_dir / "assets"), name="assets")
 
 
 class Message(BaseModel):
@@ -158,17 +166,15 @@ async def generate_sse_response(user_message: str):
 
 @app.get("/")
 async def root():
-    """Root endpoint"""
-    return {
-        "message": "StreamChatBlocks FastAPI Backend",
-        "endpoints": {
-            "stream": "/stream (POST)",
-            "feedback": "/feedback (POST)"
-        }
-    }
+    """Serve the frontend React app"""
+    html_file = static_dir / "index.html"
+    if html_file.exists():
+        return FileResponse(html_file)
+    return {"message": "Frontend not built. Run 'cd ../frontend && npm run build'"}
 
 
-@app.post("/stream")
+# API endpoints
+@app.post("/api/stream")
 async def stream_chat(request: ChatRequest):
     """
     Stream chat responses using SSE.
@@ -185,7 +191,7 @@ async def stream_chat(request: ChatRequest):
     )
 
 
-@app.post("/feedback")
+@app.post("/api/feedback")
 async def submit_feedback(request: FeedbackRequest):
     """
     Handle feedback submission.
@@ -196,7 +202,7 @@ async def submit_feedback(request: FeedbackRequest):
     return {"status": "success", "message": "Feedback received"}
 
 
-@app.get("/health")
+@app.get("/api/health")
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "timestamp": time.time()}

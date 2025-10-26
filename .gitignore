@@ -9,6 +9,7 @@ coverage/
 # Production
 dist/
 build/
+examples/fastapi-app/backend/static/
 
 # Misc
 .DS_Store
@@ -36,3 +37,4 @@ pnpm-debug.log*
 
 # Storybook
 storybook-static/
+__pycache__ 
