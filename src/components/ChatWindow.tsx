@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Message as MessageType, ChatConfig, StreamMessage } from '../types';
-import { DEFAULT_API_CONFIG, DEFAULT_THEME, DEFAULT_FEATURES } from '../config/defaults';
+import { DEFAULT_API_CONFIG, DEFAULT_THEME } from '../config/defaults';
 import { useSSEStream } from '../hooks/useSSEStream';
 import { Message } from './Message';
 import { ChatInput } from './ChatInput';
@@ -36,10 +36,11 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
     ...config.theme,
   };
 
-  const features = {
-    ...DEFAULT_FEATURES,
-    ...config.features,
-  };
+  // Features configuration (reserved for future use)
+  // const features = {
+  //   ...DEFAULT_FEATURES,
+  //   ...config.features,
+  // };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -89,7 +90,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
     }
   };
 
-  const { startStream, stopStream } = useSSEStream({
+  const { startStream } = useSSEStream({
     onMessage: handleStreamMessage,
     onError: (error) => {
       onError?.(error);
@@ -152,7 +153,7 @@ export const ChatWindow: React.FC<ChatWindowProps> = ({
       </div>
 
       <div className={styles.messagesContainer}>
-        {messages.map((message, index) => (
+        {messages.map((message) => (
           <Message
             key={message.id}
             message={message}

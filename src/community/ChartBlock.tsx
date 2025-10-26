@@ -11,7 +11,7 @@ import { CommunityComponentProps } from '../types';
  *   color?: string
  * }
  */
-export const ChartBlock: React.FC<CommunityComponentProps> = ({ block, onAction }) => {
+export const ChartBlock: React.FC<CommunityComponentProps> = ({ block }) => {
   const { title, data = [], color = '#007bff' } = block.data || {};
 
   if (!data.length) {
